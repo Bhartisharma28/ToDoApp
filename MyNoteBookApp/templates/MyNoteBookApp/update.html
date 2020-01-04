@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>update item</h3>
+    <form method="POST" action="/" >
+      {% csrf_token %}
+      {{form.title}}
+      <input type="submit" name="" value="update">
+
+    </form>
+  </body>
+</html>

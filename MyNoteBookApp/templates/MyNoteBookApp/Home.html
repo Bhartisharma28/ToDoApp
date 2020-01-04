@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title></title>
+    <style>
+      body{
+        background-color: #76777a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <div class=one>
+    <form method="POST" action="/" >
+      {% csrf_token %}
+      {{form.title}}
+      <input class="btn btn-info" type="submit" name="" value="submit">
+    </form>
+    {% for MyNoteBookModel in MyNoteBookApp %}
+    <div class="item-row">
+        <a class="btn btn-sm btn-info" href="{% url 'update' MyNoteBookModel.id %}">update</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'delete' MyNoteBookModel.id %}">delete</a>
+        {% if MyNoteBookModel.complete == True %}
+        <strike>{{MyNoteBookModel}}</strike>
+        {% else %}
+        <p>{{MyNoteBookModel}}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  </body>
+</html>
